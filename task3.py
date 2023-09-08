@@ -6,8 +6,17 @@ import re
 
 string = 'The quick brown fox jumps over the lazy dog.'
 
-words_to_find = ('fox', 'dog', 'horse')
+words_to_search = ['fox', 'dog', 'horse']
 
-for word in words_to_find:
-    
+pattern = '|'.join(re.escape(word)for word in words_to_search)
+
+result = re.findall(pattern, string)
+print(result)
+
+# other way to print the result.
+for word in words_to_search:
+    if word in string:
+        print(word, 'found in string')
+    else:
+            print(word, ' not found in string')
 
